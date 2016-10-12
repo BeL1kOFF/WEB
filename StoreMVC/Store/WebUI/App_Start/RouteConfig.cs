@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace WebUI
+namespace Store.WebUI
 {
     public class RouteConfig
     {
@@ -16,7 +16,7 @@ namespace WebUI
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Game", action = "List", id = UrlParameter.Optional }
             );
         }
     }
