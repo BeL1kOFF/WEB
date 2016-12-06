@@ -66,6 +66,27 @@ namespace Store.UnitTests
             Assert.AreEqual(games[0].Name, "Игра4");
             Assert.AreEqual(games[1].Name, "Игра5");*/
         }
+        [TestMethod]
+        public void Can_Add_Quantity_For_Existing_Lines()
+        {
+            // Организация - создание нескольких тестовых игр
+            Game game1 = new Game { GameId = 1, Name = "Игра1" };
+            Game game2 = new Game { GameId = 2, Name = "Игра2" };
+
+            // Организация - создание корзины
+            Cart cart = new Cart();
+
+            // Действие
+            cart.AddItem(game1, 1);
+            cart.AddItem(game2, 1);
+            cart.AddItem(game1, 5);
+            List<CartLine> results = cart.Lines.OrderBy(c => c.Game.GameId).ToList();
+
+            // Утверждение
+            Assert.AreEqual(results.Count(), 2);
+            Assert.AreEqual(results[0].Quantity, 6);    // 6 экземпляров добавлено в корзину
+            Assert.AreEqual(results[1].Quantity, 1);
+        }
 
         [TestMethod]
         public void Can_Send_Pagination_View_Model()
