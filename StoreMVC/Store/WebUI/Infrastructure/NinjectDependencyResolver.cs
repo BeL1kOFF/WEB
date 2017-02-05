@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
-using GameStore.Domain.Concrete;
-using Store.Domain.Abstract;
 using Moq;
 using Ninject;
+using Store.Domain.Abstract;
 using Store.Domain.Concrete;
 using Store.Domain.Entities;
 

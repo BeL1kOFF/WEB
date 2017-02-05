@@ -1,0 +1,28 @@
+﻿@model WebUI.Models.MyViewModel
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>Go to B</th>
+        </tr>
+        @foreach (var link in @Model.MyColl)
+        {
+            <tr>
+                <td>@link.Id</td>
+                <td>@link.Name</td>
+                <td>
+                    @Html.DropDownListFor(
+                    model => @link.BB,
+                    @link.BB.Select(h => new SelectListItem
+                    {
+                        Text = $"{ h.Name} Depatment {h.Id}",
+                            Value = h.Id.ToString()
+                        }),
+                    "Please select a B");
+            </td>
+                <td>@Html.ActionLink("Go to B", "GoToB", "Game", new {Id = @link.Id}, null) </td>
+                
+            </tr>
+        }
+</table>

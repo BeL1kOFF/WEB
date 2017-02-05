@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Store.Domain.Abstract;
 using Store.Domain.Entities;
 using Store.WebUI.Models;
+using WebUI.Models;
 
 namespace GameStore.WebUI.Controllers
 {
@@ -18,6 +19,19 @@ namespace GameStore.WebUI.Controllers
         {
             repository = repo;
         }
+
+        public ViewResult Index()
+        {
+            MyViewModel model = new MyViewModel();
+            return View(model);
+        }
+        public ViewResult GoToB(int Id)
+        {
+            MyViewModel model = new MyViewModel();
+            model.GetB = model.GetBB(Id);
+                       
+            return View("MyPartial", model);
+        }//()
 
         public ViewResult List(string category, int page = 1)
         {
@@ -38,6 +52,7 @@ namespace GameStore.WebUI.Controllers
                 },
                 CurrentCategory = category
             };
+            ViewBag.ForPartial = "For partial";
             return View(model);
         }
     }

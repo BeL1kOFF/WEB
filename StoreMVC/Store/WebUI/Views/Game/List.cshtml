@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "Товары";
 }
+@Html.Partial("MyPartial")
 
 @foreach (var p in @Model.Games)
 {
@@ -13,5 +14,9 @@
 
 <div class="btn-group pull-right">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List",
-        new { page = x, category = Model.CurrentCategory }))
+        new {page = x, category = Model.CurrentCategory}))
+</div>
+
+<div class="btn btn-group pull-right">
+    
 </div>

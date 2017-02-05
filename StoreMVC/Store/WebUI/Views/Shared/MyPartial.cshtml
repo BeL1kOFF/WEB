@@ -1,0 +1,15 @@
+﻿@model WebUI.Models.MyViewModel
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+        </tr>
+        @foreach (var link in @Model.GetB)
+        {
+            <tr>
+                <td>@link.Id</td>
+                <td>@link.Name</td>
+            </tr>
+        }
+</table>
